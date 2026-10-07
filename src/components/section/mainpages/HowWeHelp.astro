@@ -1,0 +1,66 @@
+---
+interface Props {
+    title?: string;
+    buttonText?: string;
+    buttonUrl?: string;
+    videoEmbedUrl?: string;
+}
+
+const {
+    title = "Solusi Jasa Kelistrikan Profesional & Terpercaya",
+    buttonText = "Konsultasi Layanan",
+    buttonUrl = "#",
+    videoEmbedUrl = "https://www.youtube.com/embed/FhIAKg-fcyc?si=V_NrQrhb_JM9inhT",
+} = Astro.props;
+---
+
+<section class="bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-screen-2xl mx-auto">
+        <div class="text-center mb-12">
+            <div class="w-12 h-1 bg-green-500 mx-auto mb-3"></div>
+            <h2 class="text-3xl font-bold text-gray-900">{title}</h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <div class="space-y-6 text-gray-600 leading-relaxed text-lg md:text-xl lg:text-2xl">
+                <p>
+                    Sistem kelistrikan yang aman dan andal adalah pondasi utama
+                    kenyamanan serta keselamatan di rumah maupun tempat kerja
+                    Anda.
+                </p>
+                <p>
+                    Kami siap melayani berbagai kebutuhan dan permasalahan
+                    kelistrikan Anda, mulai dari perbaikan gangguan/korsleting,
+                    instalasi titik listrik baru, peremajaan kabel, hingga
+                    perawatan berkala.
+                </p>
+                <p>
+                    Biaya layanan kami dapat disesuaikan dengan kebutuhan serta
+                    batasan anggaran yang Anda miliki, tanpa mengorbankan
+                    kualitas material dan standar keamanan kerja.
+                </p>
+
+                <div class="pt-4">
+                    <a
+                        href={buttonUrl}
+                        class="inline-block bg-secondary text-white font-medium px-6 py-3 rounded-sm hover:bg-gray-800 transition-colors"
+                    >
+                        {buttonText}
+                    </a>
+                </div>
+            </div>
+
+            <div class="relative w-full aspect-video rounded-sm overflow-hidden shadow-md">
+                <iframe
+                    class="absolute top-0 left-0 w-full h-full"
+                    src={videoEmbedUrl}
+                    title="Layanan Jasa Kelistrikan"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                >
+                </iframe>
+            </div>
+        </div> 
+    </div>
+</section>
