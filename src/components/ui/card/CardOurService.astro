@@ -1,0 +1,34 @@
+---
+import Image from 'astro/components/Image.astro';
+
+interface Props {
+  judul: string;
+  deskripsi: string;
+  gambar: ImageMetadata;
+  href?: string;
+}
+const { judul, deskripsi, gambar, href } = Astro.props;
+---
+
+<article
+  class="overflow-hidden bg-white rounded shadow-md transition duration-200 hover:-translate-y-1 hover:shadow-xl"
+>
+  <Image
+    src={gambar}
+    alt={judul}
+    loading="lazy"
+    class="aspect-[3/2] w-full object-cover"
+  />
+  <div class="p-6">
+    <h3 class="mb-2 text-xl font-medium">{judul}</h3>
+    <p class="leading-normal text-neutral-700 text-2xl">{deskripsi}</p>
+    {href && (
+      <a
+        href={href}
+        class="mt-4 inline-block font-semibold text-blue-700 underline hover:text-blue-900"
+      >
+        Selengkapnya
+      </a>
+    )}
+  </div>
+</article>
