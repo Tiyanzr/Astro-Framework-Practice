@@ -1,0 +1,96 @@
+---
+// src/components/AboutSection.astro
+// Pakai: <AboutSection /> di halaman manapun (mis. src/pages/tentang-kami.astro)
+
+const videoId = "FhIAKg-fcyc?si=V_NrQrhb_JM9inhT"; // contoh: dQw4w9WgXcQ
+const videoTitle = "Jasa Listrik Bandung - Solusi Kelistrikan Aman dan Terpercaya";
+
+const vision =
+  "Menjadi penyedia jasa kelistrikan terpercaya di Bandung dan sekitarnya, yang menghadirkan instalasi listrik aman, rapi, dan andal bagi setiap rumah, usaha, dan bangunan.";
+
+const mission =
+  "Jasa Listrik Bandung melayani pemasangan, perbaikan, dan perawatan instalasi listrik untuk rumah tinggal, ruko, kantor, hingga bangunan industri. Kami bekerja dengan teknisi berpengalaman, material berkualitas, dan prosedur kerja yang mengutamakan keselamatan. Kami berkomitmen memberikan solusi yang tepat, harga yang transparan, dan layanan yang bisa diandalkan agar listrik di tempat Anda selalu aman dan berfungsi optimal.";
+
+const coreValuesIntro =
+  "Dalam setiap pekerjaan, mulai dari mengganti stop kontak hingga membangun instalasi baru, kami berpegang pada nilai-nilai berikut:";
+
+const coreValues = [
+  {
+    title: "Keselamatan",
+    text: "Listrik tidak boleh dikompromikan. Setiap pekerjaan mengikuti standar keselamatan dan ketentuan instalasi listrik yang berlaku, serta menggunakan perlengkapan pengaman yang sesuai, demi melindungi penghuni dan bangunan Anda.",
+  },
+  {
+    title: "Profesionalisme",
+    text: "Teknisi kami bekerja secara terukur: memeriksa dengan teliti, menjelaskan kondisi instalasi dengan jelas, dan menuntaskan pekerjaan sesuai kesepakatan.",
+  },
+  {
+    title: "Tepat Waktu",
+    text: "Kami menghargai waktu Anda. Jadwal kunjungan dan penyelesaian pekerjaan dikomunikasikan sejak awal, dan kami berusaha merespons dengan cepat, terutama untuk kebutuhan mendesak.",
+  },
+  {
+    title: "Kualitas Material",
+    text: "Kami memilih kabel, MCB, stop kontak, dan komponen lain yang berkualitas agar hasil pekerjaan awet, efisien, dan minim risiko gangguan di kemudian hari.",
+  },
+  {
+    title: "Harga Transparan",
+    text: "Estimasi biaya dijelaskan di awal, tanpa biaya tersembunyi. Kami hanya merekomendasikan pekerjaan yang memang dibutuhkan.",
+  },
+  {
+    title: "Kejujuran dan Kepercayaan",
+    text: "Kami selalu terbuka mengenai kondisi instalasi listrik Anda dan tidak pernah menyesatkan pelanggan. Kepercayaan Anda adalah dasar hubungan jangka panjang kami.",
+  },
+];
+
+const closing =
+  "Kami menangani setiap pekerjaan dengan serius, sekecil apa pun skalanya. Kepuasan dan rasa aman pelanggan adalah ukuran keberhasilan kami.";
+---
+
+<section class="bg-gray-100 py-12 font-sans text-gray-800">
+  <div class="mx-auto max-w-[1600px] px-6 lg:px-12">
+    <div class="grid gap-10 lg:grid-cols-[4fr_7fr] lg:gap-32 xl:gap-40 lg:items-start">
+      <div class="space-y-8">
+        <div>
+          <h2 class="mb-3 text-5xl text-gray-900">Visi</h2>
+          <p class="text-xl leading-relaxed text-gray-700">{vision}</p>
+        </div>
+
+        <div>
+          <h2 class="mb-3 text-5xl font-light text-gray-900">Misi</h2>
+          <p class="text-xl leading-relaxed text-gray-700">{mission}</p>
+        </div>
+      </div>
+
+      <div class="aspect-video w-full overflow-hidden bg-black">
+        <iframe
+          class="h-full w-full"
+          src={`https://www.youtube-nocookie.com/embed/${videoId}`}
+          title={videoTitle}
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+
+    <div class="mt-16">
+      <h2 class="mb-6 text-5xl font-light text-gray-900">Nilai-Nilai Kami</h2>
+
+      <p class="mb-6 text-xl text-gray-700">{coreValuesIntro}</p>
+
+      <ul class="space-y-6">
+        {
+          coreValues.map((item) => (
+            <li class="text-xl leading-relaxed text-gray-700">
+              <strong class="font-bold text-gray-900">{item.title}:</strong>{" "}
+              {item.text}
+            </li>
+          ))
+        }
+      </ul>
+
+      <p class="mt-14 text-xl italic leading-relaxed text-gray-600">
+        {closing}
+      </p>
+    </div>
+  </div>
+</section>
