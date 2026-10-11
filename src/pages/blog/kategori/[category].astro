@@ -1,0 +1,28 @@
+---
+import { getCollection } from "astro:content";
+import BlogLayout from "@/layouts/BlogLayout.astro";
+import BannerArticle from "@/components/ui/banner/BannerArticle.astro";
+import BlogContentContainer from "@/components/section/blog/BlogContentContainer.astro";
+import { slugify } from "@/utils/slugify";
+
+export async function getStaticPaths() {
+    const blogs = await getCollection("blog", ({ data }) => !data.draft);
+
+    const categories = [
+        ...new Set(
+            blogs.map((b) => b.data.category).filter((c): c is string => !!c),
+        ),
+    ];
+
+    return categories.map((category) => ({
+        params: { category: slugify(category) },
+    }));
+}
+
+const { category } = Astro.params;
+---
+
+<BlogLayout>
+    <BannerArticle slot="banner" />
+    <BlogContentContainer category={category} />
+</BlogLayout>

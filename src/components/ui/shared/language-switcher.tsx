@@ -10,7 +10,6 @@ import {
 
 const languages = [
   { code: "id", label: "Indonesia" },
-  { code: "en", label: "English" },
 ];
 
 interface Props {

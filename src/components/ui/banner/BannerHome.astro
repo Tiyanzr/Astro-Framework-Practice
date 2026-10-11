@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import bannerImg from "@/assets/images/banner/banner-home.jpg";
+import {contact} from "@/constant/site";
 ---
 
 <section class="relative w-full overflow-hidden">
@@ -24,7 +25,7 @@ import bannerImg from "@/assets/images/banner/banner-home.jpg";
         Instalasi, perbaikan, dan perawatan listrik untuk rumah dan bisnis Anda.
       </p>
       <a
-        href="/kontak"
+        href={contact.whatsapp}
         class="mt-6 inline-block rounded-sm bg-secondary px-6 py-3 text-base font-bold text-white transition-colors hover:opacity-90 md:text-lg"
       >
         Hubungi Kami

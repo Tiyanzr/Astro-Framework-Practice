@@ -3,13 +3,14 @@ import { mainLinks } from "@/constant/navigation";
 import { Image } from "astro:assets";
 import logo from "@/assets/icons/logo.png";
 import LanguageSwitcher from "../ui/shared/language-switcher";
+import {contact} from "@/constant/site";
 
 const currentPath = Astro.url.pathname;
 const isActive = (href: string) =>
   href === "/" ? currentPath === "/" : currentPath.startsWith(href);
 ---
 
-<header class="sticky top-0 z-50 bg-primary">
+<header class="sticky top-0 z-50 bg-header-bg">
   <nav
     class="flex h-16 w-full items-center justify-between px-4 sm:px-6 md:h-20 lg:h-24 lg:px-8"
   >
@@ -44,7 +45,9 @@ const isActive = (href: string) =>
 
     <div class="flex items-center gap-2 sm:gap-4">
       <a
-        href="/kontak"
+        href={contact.whatsapp}
+        target="_blank"
+        rel="noopener noreferrer"
         class="hidden rounded-sm border border-white px-5 py-3 text-base font-bold leading-none text-white transition-colors hover:bg-hover lg:block xl:text-lg"
       >
         Hubungi Kami
@@ -108,7 +111,7 @@ const isActive = (href: string) =>
       }
       <li class="pt-2">
         <a
-          href="/kontak"
+          href={contact.whatsapp}
           class="block rounded-lg border border-white px-4 py-3 text-center text-lg font-bold text-white transition-colors hover:bg-hover"
         >
           Hubungi Kami

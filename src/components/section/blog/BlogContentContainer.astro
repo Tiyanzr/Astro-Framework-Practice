@@ -1,0 +1,45 @@
+---
+import CardArticle from "../../ui/card/CardArticle.astro";
+import { getCollection } from "astro:content";
+import { slugify } from "@/utils/slugify";
+
+interface Props {
+    category?: string; // slug kategori, mis. "artikel-industri"
+}
+
+const { category } = Astro.props;
+
+const blogs = (
+    await getCollection("blog", ({ data }) => {
+        if (data.draft) return false;
+        if (!category) return true;
+        return !!data.category && slugify(data.category) === category;
+    })
+).sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+
+const categoryName = category
+    ? blogs.find((b) => b.data.category)?.data.category ?? category
+    : undefined;
+---
+
+<section class="px-4 py-16">
+    <h2 class="mb-12 text-center text-4xl font-bold">
+        <div class="w-12 h-1 bg-green-500 mx-auto mb-3"></div>
+        {categoryName ?? "Artikel"}
+    </h2>
+
+    {blogs.length === 0 ? (
+        <p class="text-center text-gray-500">Belum ada artikel pada kategori ini.</p>
+    ) : (
+        <div class="mx-auto grid max-w-8xl gap-10 md:grid-cols-2 xl:grid-cols-3">
+            {blogs.map((blog) => (
+                <CardArticle
+                    title={blog.data.title}
+                    description={blog.data.description}
+                    image={blog.data.featuredImage}
+                    url={`/blog/${blog.id}`}
+                />
+            ))}
+        </div>
+    )}
+</section>

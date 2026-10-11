@@ -2,12 +2,13 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+@plugin "@tailwindcss/typography";
+
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 :root {
   color-scheme: light;
 
-  /* === Variabel custom kamu (menggantikan yang sama) === */
   --bg: #F3F3F3;
   --surface: #FFFFFF;
   --text: #0f172a;
@@ -18,6 +19,11 @@
   --secondary: #00890B;
   --text-secondary: #ffffff;
   --accent: #1e2327;
+  --header-bg: #2a3038;
+  --footer-bg: #2a3038;
+  --header-text: #ffffff;
+  --footer-text: #ffffff;
+
 
   /* === Variabel bawaan shadcn === */
   --background: oklch(1 0 0);
@@ -68,6 +74,10 @@
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
   --color-text-secondary: var(--text-secondary);
+  --color-header-bg: var(--header-bg);
+  --color-footer-bg: var(--footer-bg);
+  --color-header-text: var(--header-text);
+  --color-footer-text: var(--footer-text);
   --color-hover: var(--accent);
   --font-sans: "Raleway", sans-serif;
   --font-heading: var(--font-sans);

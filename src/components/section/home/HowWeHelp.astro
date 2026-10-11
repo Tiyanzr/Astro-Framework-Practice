@@ -6,15 +6,16 @@ interface Props {
     videoEmbedUrl?: string;
 }
 
-const {
-    title = "Solusi Jasa Kelistrikan Profesional & Terpercaya",
-    buttonText = "Konsultasi Layanan",
-    buttonUrl = "#",
-    videoEmbedUrl = "https://www.youtube.com/embed/FhIAKg-fcyc?si=V_NrQrhb_JM9inhT",
-} = Astro.props;
+import { getEntry, render } from "astro:content";
+
+const entry = await getEntry("howWeHelp", "how-we-help");
+if (!entry) throw new Error("Konten 'how-we-help' tidak ditemukan");
+
+const { title, buttonText, buttonUrl, videoEmbedUrl } = entry.data;
+const { Content } = await render(entry);
 ---
 
-<section class="bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
+<section class="py-16 px-4 sm:px-6 lg:px-8">
     <div class="max-w-screen-2xl mx-auto">
         <div class="text-center mb-12">
             <div class="w-12 h-1 bg-green-500 mx-auto mb-3"></div>
@@ -23,22 +24,7 @@ const {
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <div class="space-y-6 text-gray-600 leading-relaxed text-lg md:text-xl lg:text-2xl">
-                <p>
-                    Sistem kelistrikan yang aman dan andal adalah pondasi utama
-                    kenyamanan serta keselamatan di rumah maupun tempat kerja
-                    Anda.
-                </p>
-                <p>
-                    Kami siap melayani berbagai kebutuhan dan permasalahan
-                    kelistrikan Anda, mulai dari perbaikan gangguan/korsleting,
-                    instalasi titik listrik baru, peremajaan kabel, hingga
-                    perawatan berkala.
-                </p>
-                <p>
-                    Biaya layanan kami dapat disesuaikan dengan kebutuhan serta
-                    batasan anggaran yang Anda miliki, tanpa mengorbankan
-                    kualitas material dan standar keamanan kerja.
-                </p>
+                <Content />
 
                 <div class="pt-4">
                     <a

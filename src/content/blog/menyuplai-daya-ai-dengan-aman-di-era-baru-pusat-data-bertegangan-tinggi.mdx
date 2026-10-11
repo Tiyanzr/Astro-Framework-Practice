@@ -1,0 +1,357 @@
+---
+title: "Menyalakan AI dengan Aman di Era Baru Pusat Data Bertegangan Tinggi"
+description: "Seiring beban kerja AI mendorong daya rak ke skala megawatt, pusat data beralih ke 800 VDC dan lebih tinggi, sehingga meningkatkan risiko arc flash dan melampaui standar keselamatan yang ada saat ini."
+publishDate: "2026-09-29"
+author: "Ken Boyce"
+coAuthors:
+  - "Lisa Grams"
+  - "Michael Jensen"
+organization: "UL Solutions"
+category: "Artikel Industri"
+tags:
+  - "Pusat Data"
+  - "Kecerdasan Buatan"
+  - "Keselamatan Listrik"
+  - "DC Tegangan Tinggi"
+  - "Infrastruktur"
+featuredImage: "@/assets/images/blog/ai-datacenter-power.jpg"
+url : "/blog/menyuplai-daya-ai-dengan-aman-di-era-baru-pusat-data-bertegangan-tinggi"
+draft: false
+---
+
+<p>
+  <em>Artikel ini ditulis bersama oleh Lisa Grams dan Michael Jensen dari UL Solutions.</em>
+</p>
+
+<p>
+  Setiap sistem kelistrikan beroperasi dalam batas tertentu. Semakin besar daya yang dialirkan melalui
+  suatu sistem, semakin cermat sistem tersebut harus dikendalikan. Tidak ada tempat yang menunjukkan
+  prinsip ini lebih jelas daripada pesatnya ekspansi infrastruktur pusat data saat ini.
+</p>
+
+<p>
+  Hanya beberapa tahun lalu, satu rak server di pusat data umumnya membutuhkan daya sekitar
+  <strong>10 kW</strong>. Kini angka tersebut telah melonjak signifikan menjadi <strong>120 kW</strong>.
+  Dan dalam waktu dekat, satu rak di pusat data diperkirakan akan membutuhkan hingga
+  <strong>1.000 kW atau 1 MW</strong>.
+</p>
+
+<p>
+  Pertumbuhan ini terutama didorong oleh adopsi kecerdasan buatan (AI) secara luas. Seiring meningkatnya
+  permintaan dan penggunaan AI, unit pemrosesan grafis (GPU) yang digunakan untuk melatih dan menjalankan
+  model AI membutuhkan tingkat daya yang semakin tinggi agar dapat beroperasi secara optimal.
+</p>
+
+<blockquote>
+  <p>
+    <strong>Gambaran:</strong> Rak 1 MW setara dengan konsumsi listrik sekitar 300 rumah tinggal. Daya
+    sebesar itu terkonsentrasi dalam sebuah kabinet yang ukurannya kurang lebih sama dengan lemari es
+    rumah tangga. Sebuah fasilitas pusat data dapat memuat ratusan rak seperti ini, dengan total konsumsi
+    daya setara satu kota.
+  </p>
+</blockquote>
+
+<figure>
+  {/* Tambahkan gambar di sini, mis. <img src="/images/blog/nvidia-vera-rubin-nvl72.jpg" alt="..." /> */}
+  <figcaption>
+    Meningkatnya daya rak, seperti pada NVIDIA DGX Vera Rubin NVL72, mendorong pusat data menuju distribusi
+    DC bertegangan lebih tinggi. Gambar digunakan atas izin NVIDIA.
+  </figcaption>
+</figure>
+
+<p>
+  Untuk mengimbanginya, pusat data beralih ke distribusi tegangan yang lebih tinggi, yaitu
+  <strong>800 VDC</strong> dan akhirnya <strong>1.500 VDC</strong>. Meskipun hal ini memungkinkan
+  penyaluran daya yang lebih besar dengan efisiensi yang lebih baik, perubahan ini juga secara mendasar
+  mengubah bahaya pada sistem dan membuatnya jauh lebih berbahaya.
+</p>
+
+<p>
+  Mengelola risiko yang meningkat ini menuntut peninjauan ulang cara sistem dirancang, cara pemeliharaan
+  fisik dilakukan, dan cara keselamatan diterapkan di seluruh siklus hidup pusat data.
+</p>
+
+<h2>Aliran Daya di Pusat Data</h2>
+
+<p>
+  Pada desain pusat data terdahulu, topologi distribusi daya secara alami membatasi di mana energi
+  tinggi berada dan siapa yang berinteraksi dengannya:
+</p>
+
+<ol>
+  <li>Listrik masuk ke fasilitas melalui saluran utilitas tegangan menengah.</li>
+  <li>Daya melewati infrastruktur terpusat (transformator, unit UPS, switchgear).</li>
+  <li>Tegangan diturunkan ke level yang lebih rendah sebelum mencapai perangkat TI.</li>
+</ol>
+
+<p>
+  Struktur tersebut bekerja dengan baik karena kebutuhan daya masih rendah dan relatif sederhana.
+  Penyaluran listrik pada tegangan rendah di dekat titik pemakaian menjaga lingkungan operasi tetap
+  stabil. Sebagian besar pemeliharaan rutin oleh teknisi dapat dilakukan tanpa paparan langsung ke
+  segmen sistem berenergi tinggi.
+</p>
+
+<figure>
+  {/* Tambahkan gambar di sini */}
+  <figcaption>
+    Pusat data AI generasi baru menuntut penyaluran energi dan aliran daya yang lebih besar. Gambar
+    digunakan atas izin Adobe Stock.
+  </figcaption>
+</figure>
+
+<p>Namun, pada beban kerja AI multi-megawatt, paradigma tersebut tidak lagi berlaku:</p>
+
+<ul>
+  <li>
+    Menyuplai ratusan kilowatt hingga megawatt per rak membutuhkan arsitektur tegangan tinggi dan arus
+    searah (DC).
+  </li>
+  <li>
+    Menyalurkan daya secara efisien pada skala ini mengharuskan saluran berenergi tinggi dipindahkan
+    jauh lebih dekat ke titik konsumsi.
+  </li>
+  <li>
+    Elemen infrastruktur seperti transformator, busbar, konduktor, dan perangkat proteksi kini menyatu
+    erat dengan perangkat keras komputasi.
+  </li>
+  <li>
+    Kebutuhan keandalan tinggi menuntut pembangkit di lokasi dan sistem penyimpanan energi baterai
+    (BESS), yang semakin mempersulit arus gangguan dan aliran daya dua arah.
+  </li>
+</ul>
+
+<p>
+  Pemisahan fisik antara infrastruktur kelistrikan kelas utilitas dan operasi TI sehari-hari praktis
+  telah hilang. Tegangan dan kerapatan energi yang lebih tinggi kini didistribusikan langsung ke seluruh
+  ruang putih (<em>white space</em>), sehingga asumsi keselamatan tegangan rendah yang lama menjadi
+  usang.
+</p>
+
+<h2>Mengapa Praktik Operasional Perlu Beradaptasi pada Tegangan yang Lebih Tinggi</h2>
+
+<p>
+  Di fasilitas lama, pekerjaan rutin di sekitar perangkat TI sering dilakukan saat sistem masih
+  bertegangan. Sistem tersebut umumnya menyalurkan daya sekitar <strong>48 VDC</strong>, jauh di bawah
+  ambang batas yang menimbulkan risiko sengatan listrik berat. Teknisi rutin mengganti komponen dan
+  mengutak-atik koneksi tanpa perlengkapan pelindung yang berat.
+</p>
+
+<p>
+  Pada <strong>800 VDC</strong>, paparan terhadap konduktor bertegangan menimbulkan bahaya listrik yang
+  akut:
+</p>
+
+<ul>
+  <li>
+    <strong>Bahaya sengatan listrik:</strong> Ambang batas sengatan listrik berat dan kematian akibat
+    listrik terlampaui jauh. Menurut NFPA 70E (<em>Standard for Electrical Safety in the Workplace</em>),
+    konduktor yang beroperasi pada atau di atas 50 V harus ditempatkan dalam kondisi kerja yang aman
+    secara listrik (<em>electrically safe work condition</em>) sebelum diservis apabila terdapat risiko
+    paparan.
+  </li>
+  <li>
+    <strong>Bahaya arc flash:</strong> Tegangan tinggi yang dipadukan dengan kapasitas gangguan yang
+    sangat besar dapat memicu pelepasan energi termal dan mekanis yang kuat dan eksplosif.
+  </li>
+</ul>
+
+<figure>
+  {/* Tambahkan gambar di sini */}
+  <figcaption>
+    Sarung tangan berinsulasi dan alat pelindung diri (APD) menjadi wajib ketika teknisi bekerja di dekat
+    sirkuit DC bertegangan tinggi. Gambar digunakan atas izin Adobe Stock.
+  </figcaption>
+</figure>
+
+<h3>Memikirkan Ulang Hot-Swapping</h3>
+
+<p>
+  <em>Hot-swapping</em> tradisional pada kondisi 800 VDC yang bertegangan meningkatkan kemungkinan
+  terjadinya busur api saat pemutusan fisik dan memperbesar dampak eksplosif dari setiap flashover.
+</p>
+
+<p>
+  Karena memadamkan seluruh bagian klaster berdensitas tinggi sangat mahal secara operasional,
+  fasilitas kini menjajaki alternatif terstruktur seperti <em>semi-hot-swapping</em>:
+</p>
+
+<ul>
+  <li>Komponen modular yang diservis diisolasi dan dilepaskan energinya.</li>
+  <li>Busbar dan titik distribusi di dekatnya mungkin tetap bertegangan di bagian lain rak.</li>
+  <li>
+    Aliran arus pada antarmuka kontak dikurangi sebelum pemisahan, sehingga menurunkan risiko pemicu
+    busur api. Hal ini tetap menuntut kepatuhan prosedural yang ketat dan pengaman interlock sesuai
+    ketentuan OSHA.
+  </li>
+</ul>
+
+<h2>Apa Arti Energi yang Lebih Tinggi bagi Proteksi dan Koordinasi</h2>
+
+<p>
+  Peralatan proteksi harus mengisolasi dan memadamkan arus gangguan sebelum batas fisik terlampaui. Pada
+  800 VDC dan lebih tinggi, pemutusan gangguan menghadirkan kendala rekayasa yang berat.
+</p>
+
+<h3>Pemutusan Arus Gangguan AC vs. DC</h3>
+
+<p>
+  Berbeda dengan arus bolak-balik (AC), arus searah (DC) tidak memiliki titik lintas-nol alami secara
+  periodik (I = 0 A). Pada sirkuit AC, lintas-nol gelombang sinus membantu pemutus sirkuit memadamkan
+  busur listrik. Pada sirkuit DC tegangan tinggi, perangkat pemutus harus memaksa tegangan busur lebih
+  tinggi daripada tegangan sistem agar arus turun ke nol.
+</p>
+
+<p style="text-align: center; font-size: 1.15em;">
+  ΔV<sub>busur</sub> &gt; V<sub>sistem</sub>
+</p>
+
+<p>
+  Selain itu, rangkaian daya pusat data memiliki penyimpanan energi kapasitif yang besar pada catu daya
+  dan penghubung bus. Saat terjadi gangguan, pelepasan muatan kapasitif menghasilkan arus puncak sesaat
+  dengan laju kenaikan (<em>di/dt</em>) yang sangat curam, sehingga pemutusan yang aman jauh lebih sulit
+  dibandingkan sistem resistif atau induktif konvensional.
+</p>
+
+<h3>Rating Pemutusan vs. Rating Arus Hubung Singkat</h3>
+
+<p>Para insinyur harus menyeimbangkan dua parameter yang saling bergantung:</p>
+
+<ul>
+  <li>
+    <strong>Interrupting Rating (IR):</strong> Arus gangguan maksimum yang dapat dipadamkan dengan aman
+    oleh perangkat proteksi (sekering, pemutus sirkuit, interupter solid-state) tanpa kerusakan
+    katastrofik.
+  </li>
+  <li>
+    <strong>Short-Circuit Current Rating (SCCR):</strong> Arus gangguan simetris prospektif yang mampu
+    ditahan oleh peralatan selama durasi yang dibutuhkan proteksi hulu untuk memutus gangguan.
+  </li>
+</ul>
+
+<p>
+  Jika arus gangguan prospektif melebihi rating tersebut, perangkat proteksi bisa gagal memutus, atau
+  busbar dan konektor di sisi hulu dapat mengalami deformasi mekanis katastrofik sebelum proteksi
+  bekerja. Koordinasi dan selektivitas yang tepat memastikan hanya cabang yang terdampak yang terputus,
+  sehingga mencegah pemadaman berantai di seluruh klaster.
+</p>
+
+<h2>Bagaimana Gangguan Berenergi Tinggi Berubah Menjadi Bahaya Nyata</h2>
+
+<p>
+  Ketika gangguan listrik tidak langsung dipadamkan, hasil fisiknya adalah arc flash dan arc blast.
+  Arc flash terjadi ketika arus mengionisasi udara di antara konduktor, membentuk kanal plasma berimpedansi
+  rendah yang memungkinkan arus gangguan yang sangat besar mengalir:
+</p>
+
+<ul>
+  <li>
+    <strong>Pelepasan termal ekstrem:</strong> Menurut Eaton, suhu plasma arc flash dapat mencapai lebih
+    dari 35.000°F (≈ 19.400°C), lebih dari tiga kali lebih panas daripada permukaan matahari.
+  </li>
+  <li>
+    <strong>Gelombang tekanan arc blast:</strong> Pemuaian udara secara seketika dan uap logam
+    menghasilkan gelombang kejut yang cukup kuat untuk menggeser peralatan, meruntuhkan dinding
+    kabinet, dan menyebabkan trauma fisik.
+  </li>
+  <li>
+    <strong>Partikulat teruapkan:</strong> Konduktor tembaga dan aluminium memuai ribuan kali lipat
+    volumenya saat berubah seketika dari padat menjadi uap, melontarkan serpihan logam cair dan asap
+    beracun ke lorong-lorong rak yang sempit.
+  </li>
+</ul>
+
+<p>
+  Di pusat data AI berdensitas tinggi, gangguan listrik yang berlangsung kurang dari satu detik pun dapat
+  menimbulkan ledakan lokal yang mampu menyebabkan cedera serius pada personel dan kerugian infrastruktur
+  yang katastrofik.
+</p>
+
+<h2>Di Mana Standar dan Panduan Masih Berkembang</h2>
+
+<p>
+  Pusat data berdensitas tinggi modern telah melampaui kode keselamatan yang ada. Standar-standar dasar
+  seperti National Electrical Code (NEC), NFPA 70E, dan standar UL secara historis dirancang berdasarkan
+  topologi distribusi AC berskala besar.
+</p>
+
+<ul>
+  <li>
+    <strong>Kekurangan perhitungan arc flash DC:</strong> Meskipun model empiris tersedia untuk
+    perhitungan energi insiden arc flash pada sistem AC (mis. IEEE 1584), model prediktif standar untuk
+    sistem DC masih terbatas, terutama terkait pelepasan muatan kapasitif yang kompleks.
+  </li>
+  <li>
+    <strong>Kedekatan tegangan tinggi:</strong> Distribusi tegangan tinggi kini bergeser langsung ke
+    dalam selubung komputasi (mis. arsitektur bus di dalam rak dan sidecar), sebuah model integrasi yang
+    belum sepenuhnya diantisipasi oleh standar batas peralatan yang lebih lama.
+  </li>
+</ul>
+
+<h2>Menyelaraskan Standar untuk Distribusi Daya Generasi Berikutnya</h2>
+
+<p>
+  Menutup celah keselamatan ini membutuhkan kolaborasi antara lembaga penyusun standar, hyperscaler, dan
+  organisasi ilmu keselamatan.
+</p>
+
+<div style="border: 1px solid #cbd5e1; border-radius: 12px; padding: 1.25rem; margin: 1.5rem 0;">
+  <div style="text-align: center; margin-bottom: 1rem;">
+    <strong>Peta Jalan Standar Daya Pusat Data UL Solutions</strong>
+    <br />
+    <small>Analisis kesenjangan pada lebih dari 60 standar yang mencakup 800 VDC dan 1500 VDC di masa depan</small>
+  </div>
+  <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+    <div style="flex: 1 1 240px; border: 1px solid #cbd5e1; border-radius: 8px; padding: 1rem;">
+      <strong>Harmonisasi &amp; Operasi</strong>
+      <ul>
+        <li>Menyelaraskan DC 750 V / 800 V</li>
+        <li>Kerangka kerja UL/IEC/IEEE/NFPA yang terpadu</li>
+      </ul>
+    </div>
+    <div style="flex: 1 1 240px; border: 1px solid #cbd5e1; border-radius: 8px; padding: 1rem;">
+      <strong>Riset &amp; Pengujian</strong>
+      <ul>
+        <li>Perilaku arc flash DC</li>
+        <li>Sertifikasi rak modular dan sidecar</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<h3>Inisiatif Kolaboratif</h3>
+
+<ul>
+  <li>
+    <strong>Open Compute Project (OCP):</strong> Di bawah OCP Power Distribution Sub-Project, UL
+    Solutions memimpin alur kerja Codes &amp; Standards, mempertemukan pemangku kepentingan dari IEC,
+    IEEE, NFPA, NEMA, hyperscaler, dan produsen komponen untuk menyusun pedoman berbasis konsensus.
+  </li>
+  <li>
+    <strong>Current/OS Foundation:</strong> Memajukan interoperabilitas, metodologi pengujian,
+    spesifikasi instalasi, dan riset proteksi DC untuk mikrogrid dan distribusi DC berdaya tinggi.
+  </li>
+</ul>
+
+<h2>Memikirkan Ulang Desain Sistem untuk Masa Depan AI</h2>
+
+<p>
+  Seiring pusat data berkembang menuju rak berskala megawatt, fokus rekayasa bergeser dari sekadar
+  menyuplai daya menjadi mengendalikan perilaku daya secara ketat.
+</p>
+
+<p>Keberhasilan di era ini membutuhkan:</p>
+
+<ul>
+  <li>Menjaga urutan pemutusan yang dapat diprediksi dan terkoordinasi selama gangguan transien.</li>
+  <li>Menerapkan praktik kerja aman secara listrik dan interlock semi-hot-swap secara ketat.</li>
+  <li>Mengadopsi standar mendatang dari UL Solutions, NFPA, dan badan internasional.</li>
+  <li>
+    Menerapkan pertimbangan rekayasa yang matang di tempat data empiris tentang fenomena DC tegangan
+    tinggi masih berkembang.
+  </li>
+</ul>
+
+<p>
+  Dengan memadukan arsitektur daya yang inovatif dengan standar keselamatan yang ketat, industri dapat
+  mendukung kebutuhan komputasi AI tanpa mengorbankan keselamatan personel maupun integritas fasilitas.
+</p>
