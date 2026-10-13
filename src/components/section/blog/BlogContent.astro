@@ -6,11 +6,12 @@ interface Props {
   author?: string;
   category?: string;
   updatedDate?: Date;
+  publishDate?: Date;
   tags?: string[];
   image?:  ImageMetadata;
 }
 
-const { title, author, category, updatedDate, tags = [], image } = Astro.props;
+const { title, author, category, updatedDate,publishDate, tags = [], image } = Astro.props;
 
 const formatDate = (d: Date) =>
   d.toLocaleDateString("id-ID", {

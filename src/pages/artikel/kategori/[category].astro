@@ -22,7 +22,7 @@ export async function getStaticPaths() {
 const { category } = Astro.params;
 ---
 
-<BlogLayout>
+<BlogLayout title={`Artikel ${category}`} description={`Artikel ${category}`}>
     <BannerArticle slot="banner" />
     <BlogContentContainer category={category} />
 </BlogLayout>

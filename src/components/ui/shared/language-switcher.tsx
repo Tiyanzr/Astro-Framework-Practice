@@ -32,12 +32,13 @@ export default function LanguageSwitcher({ currentLang = "id" }: Props) {
         render={
           <Button
             variant="ghost"
-            className="group gap-2 text-lg font-semibold text-white hover:bg-hover hover:text-white"
+            className="group gap-1 px-2 text-base font-semibold text-white hover:bg-hover hover:text-white sm:gap-2 sm:px-3 sm:text-lg"
           />
         }
       >
-        {current?.label ?? "Bahasa"}
-        <ChevronDown className="size-5 transition-transform group-aria-expanded:rotate-180" />
+        <span className="sm:hidden">{current?.code.toUpperCase() ?? "ID"}</span>
+        <span className="hidden sm:inline">{current?.label ?? "Bahasa"}</span>
+        <ChevronDown className="size-4 transition-transform group-aria-expanded:rotate-180 sm:size-5" />
       </DropdownMenuTrigger>
 
       <DropdownMenuContent align="end" className="min-w-40 bg-white text-black">

@@ -1,28 +1,98 @@
 ---
 import "../styles/global.css";
+import type { ImageMetadata } from "astro";
+import { getImage } from "astro:assets";
 import Navbar from "@/components/layout/navbar.astro";
 import Footer from "@/components/layout/footer.astro";
 import Sidebar from "@/components/layout/sidebar.astro";
-import {serviceLinks} from "@/constant/navigation";
+import { serviceLinks } from "@/constant/navigation";
 import icon from "@/assets/icons/logo.png";
+import { articleSchema, siteName } from "@/lib/seo/schema";
+import JsonLd from "@/components/seo/JsonLD.astro";
+
+interface Props {
+	title: string;
+	description: string;
+	serviceName?: string; // nama layanan untuk schema, default = title
+	image?: ImageMetadata;
+	noindex?: boolean;
+	type?: "website" | "article";
+	publishedTime?: Date;
+	modifiedTime?: Date;
+}
+
+const {
+	title,
+	description,
+	serviceName = title,
+	image = icon,
+	noindex = false,
+	type = "website",
+	publishedTime,
+	modifiedTime,
+} = Astro.props;
+
+const fullTitle = title === siteName ? siteName : `${title} | ${siteName}`;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+const ogImage = await getImage({
+	src: image,
+	width: 1200,
+	height: 630,
+	format: "jpg",
+});
+const imageURL = new URL(ogImage.src, Astro.site);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="id">
 	<head>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/png" href={icon.src} />
 		<meta name="generator" content={Astro.generator} />
-		<title>Jasa Listrik Bandung</title>
+
+		<title>{fullTitle}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalURL} />
+		{noindex && <meta name="robots" content="noindex, nofollow" />}
+
+		<meta property="og:type" content={type} />
+		<meta property="og:site_name" content={siteName} />
+		<meta property="og:title" content={fullTitle} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:image" content={imageURL} />
+		<meta property="og:locale" content="id_ID" />
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={fullTitle} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={imageURL} />
+
+		<JsonLd
+			data={articleSchema({
+				title: serviceName,
+				description,
+				url: canonicalURL,
+				image: imageURL,
+				published: publishedTime,
+				modified: modifiedTime,
+			})}
+		/>
+		<slot name="head" />
 	</head>
 	<body class="flex min-h-screen flex-col bg-bg">
 		<Navbar />
 
 		<slot name="banner" />
 
-		<div class="grid w-full flex-1 gap-8 lg:grid-cols-[280px_1fr]">
-			<Sidebar {...serviceLinks}  />
+		<div
+			class="grid w-full flex-1 grid-cols-1 gap-8 lg:grid-cols-[280px_1fr]"
+		>
+			<div class="min-w-0">
+				<Sidebar {...serviceLinks} />
+			</div>
 			<main class="min-w-0 px-4 py-8 lg:pl-0 lg:pr-8">
 				<slot />
 			</main>

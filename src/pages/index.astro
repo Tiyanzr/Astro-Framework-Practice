@@ -4,9 +4,13 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import HowWeHelp from "@/components/section/home/HowWeHelp.astro";
 import WhatDifferent from "@/components/section/home/WhatDifferent.astro";
 import OurService from "@/components/section/home/OurService.astro";
+import { localBusinessSchema } from "@/lib/seo/schema";
+import JsonLd from "@/components/seo/JsonLD.astro";
 ---
 
-<BaseLayout>
+<BaseLayout title="Jasa Instalasi Listrik Rumah Bandung"
+	description="Instalasi listrik rumah atau tempat usaha di Bandung. Rapi, aman, bergaransi.">
+  <JsonLd slot="head" data={localBusinessSchema(Astro.site!)} />
   <BannerHome/>
   <HowWeHelp />
   <WhatDifferent />

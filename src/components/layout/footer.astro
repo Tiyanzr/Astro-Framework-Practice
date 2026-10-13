@@ -8,6 +8,9 @@ const alamat =
 const telepon = "0822-1981-4144";
 const teleponHref = "tel:+6282219814144";
 const tahun = new Date().getFullYear();
+
+const mapsEmbed = `https://www.google.com/maps?q=${encodeURIComponent(alamat)}&output=embed`;
+const mapsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(alamat)}`;
 ---
 
 <footer
@@ -28,9 +31,7 @@ const tahun = new Date().getFullYear();
             />
         </a>
 
-        <div
-            class="flex w-full flex-row items-center gap-8 lg:flex-1"
-        >
+        <div class="flex w-full flex-row items-center gap-8 lg:flex-1">
             <p class="m-0 lg:whitespace-nowrap">
                 © Copyright {tahun} {namaPerusahaan}
             </p>
@@ -45,7 +46,26 @@ const tahun = new Date().getFullYear();
                 >
                     Telp. {telepon}
                 </a>
+                <a
+                    href={mapsLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="no-underline hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                >
+                    Buka di Google Maps
+                </a>
             </address>
         </div>
+    </div>
+
+    <div class="w-full px-4 pb-10 lg:px-6">
+        <iframe
+            title={`Lokasi ${namaPerusahaan}`}
+            src={mapsEmbed}
+            class="block h-64 w-full rounded-lg border-0 lg:h-80"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+        ></iframe>
     </div>
 </footer>

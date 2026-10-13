@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jasalistrikbandung.com/sitemap-index.xml

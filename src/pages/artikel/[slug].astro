@@ -1,11 +1,11 @@
 ---
 import { getCollection, render } from "astro:content";
-import ServiceLayout from "@/layouts/ServiceLayout.astro";
-import ServiceContent from "@/components/section/service/ServiceContent.astro";
-import BannerService from "@/components/ui/banner/BannerService.astro";
+import BlogLayout from "@/layouts/BlogLayout.astro";
+import BannerArticle from "@/components/ui/banner/BannerArticle.astro";
+import BlogContent from "@/components/section/blog/BlogContent.astro";
 
 export async function getStaticPaths() {
-    const services = await getCollection("services", ({ data }) => !data.draft);
+    const services = await getCollection("blog", ({ data }) => !data.draft);
     return services.map((entry) => ({
         params: { slug: entry.id },
         props: { entry },
@@ -20,21 +20,23 @@ const {
     author,
     category,
     updatedDate,
+    publishDate,
     tags,
     featuredImage,
 } = entry.data;
 ---
 
-<ServiceLayout title={title} description={description}>
-    <BannerService slot="banner" />
-    <ServiceContent
+<BlogLayout title={title} description={description} publishedTime={publishDate} modifiedTime={updatedDate}>
+    <BannerArticle slot="banner" />
+    <BlogContent
         title={title}
         author={author}
         category={category}
         updatedDate={updatedDate}
+        publishDate={publishDate}
         tags={tags}
         image={featuredImage}
     >
         <Content />
-    </ServiceContent>
-</ServiceLayout>
+    </BlogContent>
+</BlogLayout>
