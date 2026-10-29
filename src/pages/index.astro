@@ -1,18 +1,15 @@
 ---
-import BannerHome from "@/components/ui/banner/BannerHome.astro";
-import BaseLayout from "@/layouts/BaseLayout.astro";
-import HowWeHelp from "@/components/section/home/HowWeHelp.astro";
-import WhatDifferent from "@/components/section/home/WhatDifferent.astro";
-import OurService from "@/components/section/home/OurService.astro";
-import { localBusinessSchema } from "@/lib/seo/schema";
-import JsonLd from "@/components/seo/JsonLD.astro";
+import "../styles/global.css";
 ---
 
-<BaseLayout title="Jasa Instalasi Listrik Rumah Bandung"
-	description="Instalasi listrik rumah atau tempat usaha di Bandung. Rapi, aman, bergaransi.">
-  <JsonLd slot="head" data={localBusinessSchema(Astro.site!)} />
-  <BannerHome/>
-  <HowWeHelp />
-  <WhatDifferent />
-  <OurService />
-</BaseLayout>
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Belajar Astro</title>
+  </head>
+  <body>
+    <h1 class="text-3xl font-bold p-4">Halo, Astro!</h1>
+  </body>
+</html>
